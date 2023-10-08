@@ -6,7 +6,7 @@
 
 :root {
   --cell-size: 100px;
-  --text-size: cal(var(--cell-size) * 0.9);
+  --text-size: calc(var(--cell-size) * 0.9);
 }
 body {
   margin: 0;
@@ -26,7 +26,12 @@ body {
 .cell {
   width: var(--cell-size);
   height: var(--cell-size);
-  border: 1px solid #000;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
 }
 
 .cell:first-child,
@@ -47,4 +52,75 @@ body {
 
 .cell:nth-child(3n + 3) {
   border-right: none;
+}
+
+.cell.x::after,
+.cell.x::before {
+  content: "";
+  position: absolute;
+  width: calc(var(--text-size) * 0.15);
+  height: var(--text-size);
+  background-color: #000;
+}
+
+.cell.x::before {
+  transform: rotate(45deg);
+}
+
+.cell.x::after {
+  transform: rotate(-45deg);
+}
+
+.cell.o::before,
+.cell.o::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.cell.o::before {
+  width: var(--text-size);
+  height: var(--text-size);
+  background-color: #000;
+}
+.cell.o::after {
+  width: calc(var(--text-size) * 0.75);
+  height: calc(var(--text-size) * 0.75);
+  background-color: #fff;
+}
+
+.cell.x,
+.cell.o {
+  cursor: default;
+}
+
+.message-text {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+button{
+    font-size: 2.3em;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: red;
+    border: none;
+    transform: 350ms;
+    color: #fff;
+}
+
+button:hover{
+    background-color: rgb(247, 78, 78);
+}
+
+.message-text.show{
+    display: flex;
 }
