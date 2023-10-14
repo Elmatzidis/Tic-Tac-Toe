@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Where the game's board is  -->
     <div class="board" id="board">
+      <!-- Cells where the Player select X or O -->
       <div class="cell" data-cell></div>
       <div class="cell" data-cell></div>
       <div class="cell" data-cell></div>
@@ -18,8 +20,11 @@
       <div class="cell" data-cell></div>
       <div class="cell" data-cell></div>
     </div>
+    <!-- Message where winner will be displayed -->
     <div class="message-text" id="message-text">
+      <!-- Winning message -->
       <div data-winning-message></div>
+      <!-- Restarts the game -->
       <button id="restart-game">Restart</button>
     </div>
     <script src="script.js"></script>

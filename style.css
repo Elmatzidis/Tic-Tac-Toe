@@ -4,14 +4,18 @@
   box-sizing: border-box;
 }
 
+/* Variables */
 :root {
   --cell-size: 100px;
   --text-size: calc(var(--cell-size) * 0.9);
 }
+/* Variables */
+
 body {
   margin: 0;
 }
 
+/* Game's board */
 .board {
   width: 100vw;
   height: 100vh;
@@ -23,7 +27,9 @@ body {
   grid-template-columns: repeat(3, auto);
   gap: 10px;
 }
+/* Game's board */
 
+/* Cells for game board */
 .cell {
   width: var(--cell-size);
   height: var(--cell-size);
@@ -36,29 +42,23 @@ body {
   padding: 60px;
   border-radius: 2px;
   box-shadow: 0 4px 2px -2px gray;
-  background-color: #1F3540;
+  background-color: #1f3540;
   transition: 150ms;
 }
+/* Cells for game board */
 
-@keyframes fadeIn{
-  from{
-    opacity: 0;
-  }
-  to{
-    opacity: 1;
-  }
-}
-.cell:hover{
+.cell:hover {
   background-color: #26414f;
 }
 
+/* Creation of the X */
 .cell.x::after,
 .cell.x::before {
   content: "";
   position: absolute;
   width: calc(var(--text-size) * 0.15);
   height: var(--text-size);
-  background-color: #31C4BE;
+  background-color: #31c4be;
   animation: fadeIn 100ms ease-in;
 }
 
@@ -69,7 +69,9 @@ body {
 .cell.x::after {
   transform: rotate(-45deg);
 }
+/* Creation of the X */
 
+/* Creation of the O */
 .cell.o::before,
 .cell.o::after {
   content: "";
@@ -81,19 +83,21 @@ body {
 .cell.o::before {
   width: var(--text-size);
   height: var(--text-size);
-  background-color: #EFB236;
+  background-color: #efb236;
 }
 .cell.o::after {
   width: calc(var(--text-size) * 0.75);
   height: calc(var(--text-size) * 0.75);
-  background-color: #1F3540;
+  background-color: #1f3540;
 }
+/* Creation of the O */
 
 .cell.x,
 .cell.o {
   cursor: default;
 }
 
+/* Where the message is displayed */
 .message-text {
   display: none;
   position: fixed;
@@ -107,23 +111,39 @@ body {
   color: white;
   font-size: 5rem;
 }
+/* Where the message is displayed */
 
-.message-text #restart-game{
-    padding: 12px;
-    font-size: 0.7em;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: red;
-    border: none;
-    transition: 350ms;
-    color: #fff;
+/* Button that restarts the game */
+.message-text #restart-game {
+  padding: 12px;
+  font-size: 0.7em;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: red;
+  border: none;
+  transition: 350ms;
+  color: #fff;
 }
 
-.message-text #restart-game:hover{
-    background-color: rgb(247, 78, 78);
+.message-text #restart-game:hover {
+  background-color: rgb(247, 78, 78);
 }
+/* Button that restarts the game */
 
-.message-text.show{
-    display: flex;
-    flex-direction: column;
+/* This class is added when someones wins/draw */
+.message-text.show {
+  display: flex;
+  flex-direction: column;
 }
+/* This class is added when someones wins/draw */
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Animations */
