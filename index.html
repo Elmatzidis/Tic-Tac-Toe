@@ -8,6 +8,9 @@
   </head>
   <body>
     <!-- Where the game's board is  -->
+    <div class="header">
+      <h1>Tic Tac Toe</h1>
+    </div>
     <div class="board" id="board">
       <!-- Cells where the Player select X or O -->
       <div class="cell" data-cell></div>
@@ -23,9 +26,11 @@
     <!-- Message where winner will be displayed -->
     <div class="message-text" id="message-text">
       <!-- Winning message -->
-      <div data-winning-message></div>
-      <!-- Restarts the game -->
-      <button id="restart-game">Restart</button>
+      <div class="Winning-Message-Container">
+        <div class="Winning-Message" data-winning-message></div>
+        <!-- Restarts the game -->
+        <button id="restart-game">Restart</button>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>

@@ -26,7 +26,7 @@ restartBtn.addEventListener("click", startGame);
 // Starting the game
 function startGame() {
   playerTurn = false;
-  
+
   // Loops through cell's
   cell.forEach((cell) => {
     cell.classList.remove(xPlayer);
@@ -41,7 +41,7 @@ function startGame() {
 function handleClick(e) {
   const cell = e.target;
   const current = playerTurn ? xPlayer : oPlayer;
-  
+
   // Places the marker to the cell
   placeMarker(cell, current);
 
@@ -68,7 +68,6 @@ function endGame(draw) {
 
 // Check for a draw
 function isDraw() {
-  
   // Copies the cell and checks for a draw
   return [...cell].every((cell) => {
     return cell.classList.contains(xPlayer) || cell.classList.contains(oPlayer);
@@ -87,15 +86,12 @@ function switchplayerTurn() {
 
 // Checks for a winner
 function checkWinner(current) {
- 
   // Grabs all the winning combination and loops through them
-  // Until one is true 
+  // Until one is true
   return winningCombination.some((combination) => {
-    
-    // Checks if every elements from the combinaton 
+    // Checks if every elements from the combinaton
     // satisfies the condition
     return combination.every((index) => {
-      
       // checks whether every element corresponds to a cell
       // with the class name current
       return cell[index].classList.contains(current);
