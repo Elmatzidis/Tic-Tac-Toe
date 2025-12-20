@@ -2,18 +2,9 @@
 *::before,
 * {
   box-sizing: border-box;
-  border: 1px solid black;
   margin: 0;
   padding: 0;
 }
-
-/* Variables */
-:root {
-  --cell-size: 100px;
-  --cell-min-size: 10px;
-  --text-size: calc(var(--cell-size) * 0.9);
-}
-/* Variables */
 
 body {
   background-color: #fff;
@@ -27,10 +18,11 @@ body {
   height: 10vh;
   background-color: rgb(80, 164, 243);
   box-shadow: 0 4px 10px -1px rgb(0, 0, 0);
+  container-type: inline-size;
 }
 
 .header h1 {
-  font-size: 5rem;
+  font-size: 5cqw;
   font-weight: 400;
   font-style: italic;
 }
@@ -38,37 +30,32 @@ body {
 /* Game's board */
 .board {
   width: 100%;
-  height: 60vh;
+  height: 75vh;
   display: grid;
   justify-content: center;
   align-content: center;
   justify-items: center;
   align-items: center;
   grid-template-columns: repeat(3, auto);
-  gap: 1.2rem;
+  gap: 1rem;
 }
 /* Game's board */
 
 /* Cells for game board */
 .cell {
-  /* width: var(--cell-size);
-  height: var(--cell-size); */
-  max-width: 100px;
-  max-height: 100px;
-  min-height: 20px;
-  min-width: 20px;
+  width: 8cqw;
+  height: 8cqw;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   cursor: pointer;
-  padding: 60px;
+  padding: 55px;
   border-radius: 5px;
   box-shadow: 0 5px 2px -2px gray;
   background-color: #1f3540;
   transition: 150ms;
   border: none;
-  
 }
 /* Cells for game board */
 
@@ -81,8 +68,8 @@ body {
 .cell.x::before {
   content: "";
   position: absolute;
-  width: calc(var(--text-size) * 0.15);
-  height: var(--text-size);
+  width: 0.8cqw;
+  height: 5cqw;
   background-color: rgb(80, 164, 243);
   animation: FadeInScale 100ms ease-in;
 }
@@ -106,13 +93,13 @@ body {
 }
 
 .cell.o::before {
-  width: var(--text-size);
-  height: var(--text-size);
+  width: 5cqw;
+  height: 5cqw;
   background-color: #efb236;
 }
 .cell.o::after {
-  width: calc(var(--text-size) * 0.75);
-  height: calc(var(--text-size) * 0.75);
+  width: 3.6cqw;
+  height: 3.6cqw;
   background-color: #1f3540;
 }
 /* Creation of the O */
@@ -145,7 +132,6 @@ body {
   min-height: 350px;
   min-width: 300px;
   display: flex;
-  font-size: 5rem;
   white-space: nowrap;
   justify-content: space-evenly;
   align-items: space-between;
@@ -157,12 +143,17 @@ body {
   border-radius: 15px;
   animation: fadeIn 450ms ease-in-out;
   text-align: center;
+  container-type: inline-size;
+}
+
+.Winning-Message {
+  font-size: 23cqw;
 }
 
 /* Button that restarts the game */
 .message-text #restart-game {
   padding: 12px;
-  font-size: 3rem;
+  font-size: clamp(1rem, 3rem, 4.5rem);
   border-radius: 10px;
   cursor: pointer;
   background-color: rgb(63, 137, 206);
@@ -207,9 +198,34 @@ body {
 }
 /* Animations */
 
-
 @media screen and (max-width: 600px) {
+  .board {
+    width: 100%;
+    height: 80vh;
+  }
 
+  .header h1 {
+    font-size: 20cqw;
+  }
 
+  .Winning-Message-Container {
+    width: 90cqw;
+    height: 90cqw;
+  }
 
+  .cell.x::after,
+  .cell.x::before {
+    width: 2cqw;
+    height: 15cqw;
+  }
+
+  .cell.o::after {
+    width: 10cqw;
+    height: 10cqw;
+  }
+
+  .cell.o::before {
+    width: 15cqw;
+    height: 15cqw;
+  }
 }

@@ -59,7 +59,7 @@ function handleClick(e) {
 // Winning message depending on the outcome
 function endGame(draw) {
   if (draw) {
-    winningMessage.innerText = "Draw!";
+    winningMessage.innerText = "It's a Draw!";
   } else {
     winningMessage.innerText = `${playerTurn ? "X's" : "O's"} Wins!`;
   }
