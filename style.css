@@ -25,6 +25,50 @@ body {
   font-size: 5cqw;
   font-weight: 400;
   font-style: italic;
+  color: #fff;
+}
+
+.name-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  gap: 3cqw;
+  top: 4.5cqw;
+}
+
+.name-input .player-name {
+  border: none;
+  text-align: center;
+  position: relative;
+  font-size: clamp(1.2rem, 1.5rem, 3rem);
+}
+
+.submit-names {
+  background-color: rgb(80, 164, 243);
+  border: none;
+  padding: 0.6cqw;
+  border-radius: 10px;
+  font-size: 1.7cqw;
+  cursor: pointer;
+  position: relative;
+  bottom: 3cqw;
+  transition: 250ms;
+  width: 10cqw;
+  height: 4cqw;
+}
+
+.submit-names:hover {
+  background-color: rgb(112, 194, 46);
+  width: 12cqw;
+  height: 3.5cqw;
+}
+
+.cell-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 /* Game's board */
@@ -132,14 +176,13 @@ body {
   min-height: 350px;
   min-width: 300px;
   display: flex;
-  white-space: nowrap;
+
   justify-content: space-evenly;
   align-items: space-between;
   flex-direction: column;
-  /* border: 1px solid black; */
   gap: 3rem;
   padding: 2rem;
-  background-color: rgb(80, 164, 243);
+  background-color: #1f3540;
   border-radius: 15px;
   animation: fadeIn 450ms ease-in-out;
   text-align: center;
@@ -148,22 +191,23 @@ body {
 
 .Winning-Message {
   font-size: 23cqw;
+  color: #fff;
 }
 
 /* Button that restarts the game */
 .message-text #restart-game {
   padding: 12px;
-  font-size: clamp(1rem, 3rem, 4.5rem);
+  font-size: 15cqw;
   border-radius: 10px;
   cursor: pointer;
-  background-color: rgb(63, 137, 206);
-  border: none;
+  background-color: rgb(80, 164, 243);
   transition: 350ms;
   color: #fff;
+  border: none;
 }
 
 .message-text #restart-game:hover {
-  background-color: rgb(247, 78, 78);
+  background-color: rgb(112, 194, 46);
 }
 /* Button that restarts the game */
 
@@ -227,5 +271,28 @@ body {
   .cell.o::before {
     width: 15cqw;
     height: 15cqw;
+  }
+
+  .name-input {
+    gap: 20cqw;
+    justify-content: space-between;
+  }
+  .player-name {
+    font-size: 1.2rem;
+    width: 40cqw;
+  }
+  .submit-names {
+    width: 50cqw;
+    height: 20cqw;
+    font-size: 10cqw;
+  }
+
+  .submit-names:hover {
+    width: 50cqw;
+    height: 20cqw;
+    font-size: 10cqw;
+  }
+  .board {
+    height: 120cqw;
   }
 }

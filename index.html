@@ -11,18 +11,38 @@
     <div class="header">
       <h1>Tic Tac Toe</h1>
     </div>
-    <div class="board" id="board">
+
+    <div class="cell-content">
+      <div class="name-input">
+        <input
+          id="Player1"
+          class="player-name"
+          type="text"
+          placeholder="Player 1"
+        />
+
+        <input
+          id="Player2"
+          class="player-name"
+          type="text"
+          placeholder="Player 2"
+        />
+      </div>
       <!-- Cells where the Player select X or O -->
-      <div class="cell" data-cell></div>
-      <div class="cell" data-cell></div>
-      <div class="cell" data-cell></div>
-      <div class="cell" data-cell></div>
-      <div class="cell" data-cell></div>
-      <div class="cell" data-cell></div>
-      <div class="cell" data-cell></div>
-      <div class="cell" data-cell></div>
-      <div class="cell" data-cell></div>
+      <div class="board" id="board">
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+        <div class="cell" data-cell></div>
+      </div>
+      <button class="submit-names" type="submit" value="submit">submit</button>
     </div>
+
     <!-- Message where winner will be displayed -->
     <div class="message-text" id="message-text">
       <!-- Winning message -->

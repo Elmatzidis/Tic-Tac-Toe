@@ -3,9 +3,15 @@ const cell = document.querySelectorAll("[data-cell]");
 const messageText = document.querySelector("#message-text");
 const winningMessage = document.querySelector("[data-winning-message]");
 const restartBtn = document.querySelector("#restart-game");
-const xPlayer = "x";
-const oPlayer = "o";
+const submitedNames = document.querySelector(".submit-names");
+const nameInput = document.querySelectorAll(".player-name");
+const markerX = "x";
+const markerO = "o";
+let playerName1 = " ";
+let playerName2 = " ";
 let playerTurn;
+canPlay = true;
+
 // Winning combinations to Tic-Tac-Toe
 const winningCombination = [
   [0, 1, 2],
@@ -18,70 +24,49 @@ const winningCombination = [
   [2, 4, 6],
 ];
 
-startGame();
+function getUserName() {
+  console.log("pressed");
+  const PLayer1 = document.querySelector("#Player1").value;
+  const Player2 = document.querySelector("#Player2").value;
 
-// When pressed the game starts
+  if (PLayer1 === "" || Player2 === "") {
+    window.alert("Both names must be entred to submit");
+    canPlay = false;
+    return;
+  } else {
+    playerName1 = PLayer1;
+    playerName2 = Player2;
+    canPlay = true;
+    return;
+  }
+}
+
+// When pressed the game restarts
 restartBtn.addEventListener("click", startGame);
 
-// Starting the game
-function startGame() {
-  playerTurn = false;
-
-  // Loops through cell's
-  cell.forEach((cell) => {
-    cell.classList.remove(xPlayer);
-    cell.classList.remove(oPlayer);
-    cell.removeEventListener("click", handleClick);
-    cell.addEventListener("click", handleClick, { once: true });
-  });
-  messageText.classList.remove("show");
-}
-
-// Handles the platers pick
+// Handles the players pick
 function handleClick(e) {
-  const cell = e.target;
-  const current = playerTurn ? xPlayer : oPlayer;
-
-  // Places the marker to the cell
-  placeMarker(cell, current);
-
-  // Checks for a winner
-  if (checkWinner(current)) {
-    endGame(false);
-  } else if (isDraw()) {
-    endGame(true);
-  } else {
-    switchplayerTurn();
+  if (canPlay == false) {
+    window.alert("You have to enter both names to submit");
+    return;
   }
-}
+  console.log(canPlay);
+  if (canPlay == true) {
+    const cell = e.target;
+    const current = playerTurn ? markerX : markerO;
+    // Places the marker to the cell
+    placeMarker(cell, current);
 
-// When the game ends the following shows to the
-// Winning message depending on the outcome
-function endGame(draw) {
-  if (draw) {
-    winningMessage.innerText = "It's a Draw!";
-  } else {
-    winningMessage.innerText = `${playerTurn ? "X's" : "O's"} Wins!`;
+    // Checks for a winner
+    if (checkWinner(current)) {
+      endGame(false);
+    } else if (isDraw()) {
+      endGame(true);
+    } else {
+      switchplayerTurn();
+    }
+    return;
   }
-  messageText.classList.add("show");
-}
-
-// Check for a draw
-function isDraw() {
-  // Copies the cell and checks for a draw
-  return [...cell].every((cell) => {
-    return cell.classList.contains(xPlayer) || cell.classList.contains(oPlayer);
-  });
-}
-
-// Place's the X or O
-function placeMarker(cell, current) {
-  cell.classList.add(current);
-}
-
-// Switches players turns
-function switchplayerTurn() {
-  playerTurn = !playerTurn;
 }
 
 // Checks for a winner
@@ -98,3 +83,53 @@ function checkWinner(current) {
     });
   });
 }
+
+// When the game ends the following shows to the
+// Winning message depending on the outcome
+function endGame(draw) {
+  if (draw) {
+    winningMessage.innerText = "It's a Draw!";
+  } else {
+    winningMessage.innerText = `${
+      playerTurn ? playerName1 : playerName2
+    } Wins!`;
+  }
+  messageText.classList.add("show");
+}
+
+// Starting the game
+function startGame() {
+  playerTurn = false;
+
+  // Loops through cell's
+  cell.forEach((cell) => {
+    cell.classList.remove(markerX);
+    cell.classList.remove(markerO);
+    cell.removeEventListener("click", handleClick);
+    cell.addEventListener("click", handleClick, { once: true });
+  });
+  messageText.classList.remove("show");
+}
+
+// Check for a draw
+function isDraw() {
+  // Copies the cell and checks for a draw
+  return [...cell].every((cell) => {
+    return cell.classList.contains(markerX) || cell.classList.contains(markerO);
+  });
+}
+
+// Place's the X or O
+function placeMarker(cell, current) {
+  cell.classList.add(current);
+}
+
+// Switches players turns
+function switchplayerTurn() {
+  playerTurn = !playerTurn;
+}
+
+submitedNames.addEventListener("click", () => {
+  getUserName();
+  startGame();
+});
